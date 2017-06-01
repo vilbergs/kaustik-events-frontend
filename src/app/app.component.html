@@ -1,3 +1,53 @@
-<h1>
-  {{title}}
-</h1>
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12">
+      <h1>Lumen API with Angular Example</h1>
+      <p class="lead">
+        Here I created the backend API in Lumen and connected a simple Angular Frontend to it.
+        
+      </p>
+    </div>
+  </div>
+  <hr>  
+  <div class="row">
+    <div class="col-xs-12">
+      <table class="table table-striped table-bordered table-hover">
+      <tr>
+          <th>#</th>
+          <th>Person</th>
+          <th>Location</th>
+          <th>Start Date</th>
+          <th>End Date</th>
+          <th>Activity</th>
+      </tr>
+      
+      <tr *ngFor="let event of events" (click)="onRowDetails(event)" data-toggle="modal" data-target=".infoModal">
+        <td>{{ event.id }}</td>
+        <td>{{ event.person }}</td>
+        <td>{{ event.location }}</td>
+        <td>{{ event.startDate | date : "EEEE, MMM M HH:MM" }}</td>
+        <td>{{ event.endDate | date : "EEEE, MMM M HH:MM" }}</td>
+        <td>{{ event.activity }}</td>
+      </tr>
+    </table>
+    </div>
+  </div>
+
+  <div class="modal fade infoModal" id="modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title" id="myModalLabel">{{ selectedEvent.activity }} med {{ selectedEvent.person }}</h4>
+        </div>
+        <div class="modal-body">
+          <p>från: <strong>{{ selectedEvent.startDate | date : "MMM d, y HH:MM" }}</strong></p>
+          <p>till: <strong>{{ selectedEvent.endDate | date : "MMM d, y HH:MM" }}</strong></p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
