@@ -4,8 +4,6 @@ import { Response } from '@angular/http';
 
 import { EventService } from './event.service';
 
-import $ from 'jquery';
-
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
